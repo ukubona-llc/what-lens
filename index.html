@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ukubona LLC · Old Timerz · 27 Jun 2026 · 18:00</title>
+<meta property="og:title" content="Ukubona LLC · Sovereign Computation · Kampala"/>
+<meta property="og:description" content="We reduce the cost of experimentation before decisions become admissions, procurements, budget lines, or policy commitments."/>
+<meta property="og:type" content="website"/>
+
+<link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-dark.ico"/>
+<link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme:light)"/>
+<link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-dark.png" as="image"/>
+<link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-light.png" as="image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --bg0:#0a0a08; --bg1:#111110; --bg2:#1a1a18; --bg3:#222220;
+  --border-faint:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.08);
+  --border-md:rgba(255,255,255,0.15);
+  --text0:#f5f2eb; --text1:#b8b3a8; --text2:#706b62; --text3:#3d3933;
+  --amber:#c8921a; --amber-d:rgba(200,146,26,0.10); --amber-b:rgba(200,146,26,0.28);
+  --amber-bright:#e0a82e;
+  --red:#c0392b; --green:#1a6b3c;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono','Fira Mono',monospace;
+  --max:900px; --r:8px; --rl:14px;
+  --shadow:0 1px 3px rgba(0,0,0,0.5),0 4px 20px rgba(0,0,0,0.35);
+}
+[data-theme="light"] {
+  --bg0:#f0ede5; --bg1:#ffffff; --bg2:#e8e4db; --bg3:#ddd9cf;
+  --border-faint:rgba(0,0,0,0.04);
+  --border:rgba(0,0,0,0.07);
+  --border-md:rgba(0,0,0,0.13);
+  --text0:#18160f; --text1:#47433a; --text2:#857f74; --text3:#bdb8ae;
+  --amber:#8a5e08; --amber-d:rgba(138,94,8,0.08); --amber-b:rgba(138,94,8,0.24);
+  --amber-bright:#8a5e08;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ═══════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  font-family:var(--sans);
+  background:var(--bg0);
+  color:var(--text0);
+  line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+  transition:background .35s,color .35s;
+}
+a{color:var(--amber-bright);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+.site-nav{
+  position:sticky;top:0;z-index:400;
+  background:var(--bg0);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;padding:0 2rem;
+  height:56px;display:flex;align-items:center;gap:.85rem;
+}
+.logo-wrap{width:32px;height:32px;flex-shrink:0;position:relative;}
+.logo-wrap img{
+  width:100%;height:100%;object-fit:contain;
+  position:absolute;top:0;left:0;transition:opacity .4s;
+  animation:spin 120s linear infinite;
+}
+.logo-dark{opacity:1;} .logo-light{opacity:0;}
+[data-theme="light"] .logo-dark{opacity:0;} [data-theme="light"] .logo-light{opacity:1;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@media(prefers-reduced-motion:reduce){.logo-wrap img{animation:none;}}
+.nav-brand{
+  font-family:var(--serif);font-size:.98rem;color:var(--text0);
+  flex:1;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.nav-date{font-family:var(--mono);font-size:.58rem;color:var(--text2);letter-spacing:.07em;margin-left:.5rem;}
+.theme-btn{
+  background:var(--bg2);border:1px solid var(--border-md);
+  border-radius:20px;padding:.26rem .8rem;
+  font-family:var(--mono);font-size:.58rem;color:var(--text1);
+  cursor:pointer;letter-spacing:.06em;flex-shrink:0;
+  transition:background .2s,color .2s;
+}
+.theme-btn:hover{background:var(--bg3);color:var(--text0);}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.outer{max-width:var(--max);margin:0 auto;padding:0 2rem 4rem;}
+
+/* ═══════════════════════════════════════════
+   HEADER BLOCK
+═══════════════════════════════════════════ */
+.page-header{
+  padding:3rem 0 2.5rem;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.page-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 60% at 5% 50%,rgba(200,146,26,0.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.ph-eyebrow{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--text2);margin-bottom:.9rem;
+}
+.ph-lede{
+  font-family:var(--serif);font-size:clamp(1.4rem,4vw,2.2rem);
+  font-style:italic;line-height:1.25;color:var(--text0);
+  margin-bottom:.65rem;letter-spacing:-.02em;
+}
+.ph-lede em{font-style:normal;color:var(--amber-bright);}
+.ph-sub{
+  font-size:.875rem;color:var(--text1);max-width:68ch;
+  line-height:1.82;margin-bottom:1.75rem;
+}
+.ph-sub strong{color:var(--text0);font-weight:500;}
+.meta-row{
+  display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;
+}
+.meta-chip{
+  display:inline-flex;align-items:center;gap:.38rem;
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.07em;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:20px;padding:.22rem .65rem;color:var(--text2);
+}
+.meta-chip.amber{
+  background:var(--amber-d);border-color:var(--amber-b);color:var(--amber-bright);
+}
+
+/* ═══════════════════════════════════════════
+   SECTION LABEL
+═══════════════════════════════════════════ */
+.sec-label{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber-bright);
+  margin-bottom:.9rem;padding-top:2rem;
+}
+
+/* ═══════════════════════════════════════════
+   TIMELINE — FIVE-WINDOW SEQUENCE
+═══════════════════════════════════════════ */
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{
+  display:grid;
+  grid-template-columns:5.5rem 1px 1fr;
+  gap:0 1.4rem;
+  padding-bottom:2rem;
+}
+.tl-item:last-child{padding-bottom:0;}
+.tl-time{
+  font-family:var(--mono);font-size:.65rem;color:var(--amber-bright);
+  text-align:right;padding-top:.18rem;letter-spacing:.04em;white-space:nowrap;
+}
+.tl-spine{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+}
+.tl-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--amber-bright);flex-shrink:0;margin-top:.25rem;
+  box-shadow:0 0 0 3px var(--amber-d);
+}
+.tl-line{
+  flex:1;width:1px;background:var(--border);margin-top:4px;
+}
+.tl-item:last-child .tl-line{background:transparent;}
+.tl-body{padding-top:0;}
+.tl-heading{
+  font-family:var(--serif);font-style:italic;
+  font-size:1.05rem;color:var(--text0);margin-bottom:.5rem;letter-spacing:-.01em;
+}
+.tl-heading em{font-style:normal;color:var(--amber-bright);}
+.tl-prose{
+  font-size:.795rem;color:var(--text1);line-height:1.75;margin-bottom:.75rem;
+}
+.tl-prose strong{color:var(--text0);font-weight:500;}
+
+/* ═══════════════════════════════════════════
+   ROUTE FORK
+═══════════════════════════════════════════ */
+.fork{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.65rem;}
+.fork-card{
+  padding:.8rem 1rem;border:.5px solid var(--border);
+  border-radius:8px;background:rgba(255,255,255,.02);
+}
+.fork-label{
+  font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amber-bright);opacity:.85;margin-bottom:.4rem;
+}
+.fork-text{font-size:.72rem;color:var(--text2);line-height:1.45;}
+.fork-card.hi{
+  background:var(--amber-d);border-color:var(--amber-b);
+}
+.fork-card.hi .fork-text{color:var(--text1);}
+
+/* ═══════════════════════════════════════════
+   REVEAL CARDS (MATRIX / CLINICAL)
+═══════════════════════════════════════════ */
+.reveal-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.65rem;}
+.rev-card{
+  padding:.9rem 1rem;border:.5px solid var(--border);
+  border-radius:8px;background:rgba(255,255,255,.025);
+}
+.rev-card.active{
+  background:var(--amber-d);border-color:var(--amber-b);
+}
+.rev-tag{
+  font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amber-bright);margin-bottom:.4rem;
+}
+.rev-screen{
+  font-family:var(--serif);font-style:italic;
+  font-size:.88rem;color:var(--text0);margin-bottom:.35rem;
+}
+.rev-caption{font-size:.68rem;color:var(--text2);line-height:1.45;}
+.rev-quote{
+  font-size:.72rem;color:var(--text1);line-height:1.52;
+  border-left:2px solid var(--amber-b);padding-left:.7rem;
+  margin-top:.6rem;font-style:italic;
+}
+
+/* ═══════════════════════════════════════════
+   MOAT BLOCK
+═══════════════════════════════════════════ */
+.moat-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:.65rem;
+}
+.moat-card{
+  padding:.75rem .9rem;border:.5px solid var(--border);
+  border-radius:6px;background:rgba(255,255,255,.02);
+}
+.moat-icon{
+  font-family:var(--mono);font-size:.58rem;color:var(--amber-bright);margin-bottom:.3rem;
+}
+.moat-label{
+  font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text2);margin-bottom:.25rem;
+}
+.moat-text{font-size:.7rem;color:var(--text2);line-height:1.4;}
+
+/* ═══════════════════════════════════════════
+   PIVOT — CLOSE CARD
+═══════════════════════════════════════════ */
+.pivot-card{
+  background:var(--amber-d);border:.5px solid var(--amber-b);
+  border-radius:10px;padding:1.1rem 1.3rem;margin-top:.65rem;
+}
+.pivot-question{
+  font-family:var(--serif);font-style:italic;
+  font-size:1.1rem;color:var(--text0);line-height:1.35;margin-bottom:.6rem;
+}
+.pivot-question em{font-style:normal;color:var(--amber-bright);}
+.pivot-note{
+  font-family:var(--mono);font-size:.58rem;color:var(--text2);
+  letter-spacing:.05em;line-height:1.55;
+}
+
+/* ═══════════════════════════════════════════
+   PRE-LOAD CHECKLIST
+═══════════════════════════════════════════ */
+.check-list{list-style:none;margin-top:.5rem;}
+.check-list li{
+  display:flex;gap:.65rem;padding:.45rem 0;
+  border-bottom:.5px solid var(--border-faint);
+  font-size:.75rem;color:var(--text2);line-height:1.5;
+}
+.check-list li:last-child{border-bottom:none;}
+.check-icon{
+  font-family:var(--mono);font-size:.6rem;
+  color:var(--amber-bright);flex-shrink:0;padding-top:2px;min-width:1.1rem;
+}
+
+/* ═══════════════════════════════════════════
+   CHAIN (TMVES — compact reference)
+═══════════════════════════════════════════ */
+.chain{display:flex;align-items:stretch;gap:0;flex-wrap:nowrap;}
+.chain-node{
+  flex:1;min-width:72px;padding:.65rem .5rem .6rem;text-align:center;
+}
+.chain-node:first-child{border-radius:8px 0 0 8px;}
+.chain-node:last-child{border-radius:0 8px 8px 0;}
+.cn-label{
+  font-family:var(--mono);font-size:.46rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text2);margin-bottom:3px;
+}
+.cn-main{font-family:var(--serif);font-size:.88rem;color:var(--text0);font-style:italic;}
+.cn-sub{font-size:.58rem;color:var(--text2);margin-top:2px;line-height:1.3;}
+.cn-arrow{
+  width:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  color:var(--amber-bright);font-size:.8rem;opacity:.6;
+}
+.t-tensor{background:var(--amber-d);border:.5px solid var(--amber-b);}
+.t-mid{background:rgba(255,255,255,.03);border:.5px solid var(--border);}
+.t-scalar{background:rgba(200,146,26,.14);border:.5px solid rgba(200,146,26,.35);}
+
+/* ═══════════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════════ */
+.divider{
+  border:none;border-top:.5px solid var(--border);
+  margin:0;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.page-footer{
+  border-top:.5px solid var(--border);
+  padding-top:1.75rem;margin-top:2.5rem;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-phrase{
+  font-family:var(--serif);font-style:italic;
+  font-size:1rem;color:var(--text2);
+}
+.footer-contact{text-align:right;}
+.footer-line{
+  font-family:var(--mono);font-size:.58rem;
+  color:var(--text2);letter-spacing:.05em;margin-bottom:2px;
+}
+.footer-line a{color:var(--amber-bright);}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:640px){
+  .outer{padding:0 1.1rem 3rem;}
+  .fork{grid-template-columns:1fr;}
+  .reveal-grid{grid-template-columns:1fr;}
+  .moat-row{grid-template-columns:1fr 1fr;}
+  .chain{flex-wrap:wrap;}
+  .chain-node{flex:1 0 65px;}
+  .cn-arrow{display:none;}
+  .nav-date{display:none;}
+  .tl-item{grid-template-columns:4.2rem 1px 1fr;gap:0 1rem;}
+  .page-footer{flex-direction:column;align-items:flex-start;}
+  .footer-contact{text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <div class="logo-wrap" aria-hidden="true">
+      <img class="logo-dark"  src="https://abikesa.github.io/logos/assets/ukubona-dark.png"  alt="Ukubona"/>
+      <img class="logo-light" src="https://abikesa.github.io/logos/assets/ukubona-light.png" alt="Ukubona"/>
+    </div>
+    <div class="nav-brand">
+      Ukubona LLC
+      <span class="nav-date">· Old Timerz · 27 Jun 2026 · 18:00</span>
+    </div>
+    <button class="theme-btn" id="theme-btn" aria-label="Toggle color theme">light</button>
+  </div>
+</nav>
+
+<div class="outer">
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <p class="ph-eyebrow">Tactical briefing · 5-minute window · Old Timerz, Kampala · Saturday 27 June 2026 · 18:00</p>
+    <p class="ph-lede">The math does the heavy lifting. <em>You are just there to translate the gradients.</em></p>
+    <p class="ph-sub">
+      A second-by-second sequence for a CFA and infrastructure engineer who assesses <strong>systemic capital allocation.</strong>
+      No pitch deck mentality. A live, computable artifact anchors every move. Walk in with endpoints pre-loaded — no NaN%, no loading bars.
+    </p>
+    <div class="meta-row">
+      <span class="meta-chip amber">5-minute sequence</span>
+      <span class="meta-chip">CFA · infrastructure engineer</span>
+      <span class="meta-chip">Enterprise twin · Clinical twin</span>
+      <span class="meta-chip">Oakstone capital lens · East Africa</span>
+    </div>
+  </header>
+
+  <!-- TMVES REFERENCE (compact) -->
+  <p class="sec-label">Compression chain — have this loaded, not explained</p>
+  <div class="chain">
+    <div class="chain-node t-tensor">
+      <div class="cn-label">Tensor</div>
+      <div class="cn-main">Raw events</div>
+      <div class="cn-sub">NDJSON append-only</div>
+    </div>
+    <div class="cn-arrow">→</div>
+    <div class="chain-node t-mid">
+      <div class="cn-label">Matrix</div>
+      <div class="cn-main">Jacobian</div>
+      <div class="cn-sub">sensitivity surface</div>
+    </div>
+    <div class="cn-arrow">→</div>
+    <div class="chain-node t-mid">
+      <div class="cn-label">Vector</div>
+      <div class="cn-main">Gradients</div>
+      <div class="cn-sub">loss landscape</div>
+    </div>
+    <div class="cn-arrow">→</div>
+    <div class="chain-node t-mid">
+      <div class="cn-label">Eigenmode</div>
+      <div class="cn-main">Signal</div>
+      <div class="cn-sub">variance explained</div>
+    </div>
+    <div class="cn-arrow">→</div>
+    <div class="chain-node t-scalar">
+      <div class="cn-label">Scalar</div>
+      <div class="cn-main">Decision</div>
+      <div class="cn-sub">executive summary</div>
+    </div>
+  </div>
+
+  <hr class="divider" style="margin-top:2rem;"/>
+
+  <!-- FIVE-WINDOW TIMELINE -->
+  <p class="sec-label">Second-by-second sequence</p>
+  <div class="timeline">
+
+    <!-- 0:00–1:00 -->
+    <div class="tl-item">
+      <div class="tl-time">0:00–1:00</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="tl-heading">The Anchor <em>&amp;</em> The Question</div>
+        <p class="tl-prose">
+          Bypass philosophical origins — Heraclitus and Parmenides belong in the codebase, not the opening handshake.
+        </p>
+        <p class="tl-prose">
+          <strong>The Hook.</strong> Deliver the core value proposition in a single, macroeconomic breath:
+          <em style="color:var(--text0);font-style:italic;">"We build digital rehearsal environments so African enterprises and governments can reduce the cost of experimentation before decisions become irreversible budget lines or policy commitments."</em>
+        </p>
+        <p class="tl-prose">
+          <strong>The Route.</strong> Hand the steering wheel directly to him:
+          <em style="color:var(--text0);font-style:italic;">"Fiona mentioned our work intersects with your focus on decision infrastructure. Before I pull up any architecture, what makes this hour most useful for you? Are you looking at this through the Oakstone capital lens, or just mapping the local ecosystem?"</em>
+        </p>
+      </div>
+    </div>
+
+    <!-- 1:00–2:00 -->
+    <div class="tl-item">
+      <div class="tl-time">1:00–2:00</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="tl-heading">The <em>Silence</em></div>
+        <p class="tl-prose">
+          Stop talking completely. Let him define his coordinate system. His response dictates which production twin you pull up.
+        </p>
+        <div class="fork">
+          <div class="fork-card hi">
+            <div class="fork-label">If macro-risk, yield, or capital formation</div>
+            <div class="fork-text">Route to the <strong style="color:var(--text0);">Enterprise Twin</strong> — <code style="font-family:var(--mono);font-size:.65rem;">/smart/</code></div>
+          </div>
+          <div class="fork-card">
+            <div class="fork-label">If health tech or localised impact</div>
+            <div class="fork-text">Route to the <strong style="color:var(--text0);">Clinical Twin</strong> — Prossy Nansubuga</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2:00–3:30 -->
+    <div class="tl-item">
+      <div class="tl-time">2:00–3:30</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="tl-heading">The One-Screen <em>Reveal</em></div>
+        <p class="tl-prose">
+          Do not click through the tabs or explain the TMVES chain from top to bottom. Show one screen and point to one moving part to prove the system computes real constraints.
+        </p>
+        <div class="reveal-grid">
+          <div class="rev-card active">
+            <div class="rev-tag">If Enterprise</div>
+            <div class="rev-screen">Open Matrix tab → Jacobian Oracle</div>
+            <div class="rev-caption">Point to the Bond yield Δ sensitivity cell.</div>
+            <div class="rev-quote">"This isn't a dashboard tracking what happened yesterday; it's a sensitivity surface showing what moves what — and by how much — before capital is committed."</div>
+          </div>
+          <div class="rev-card">
+            <div class="rev-tag">If Clinical</div>
+            <div class="rev-screen">Open Matrix or Pain Diary → Prossy Nansubuga</div>
+            <div class="rev-caption">Show the polypharmacy Jacobian — specific gradient where a drug amplifies or suppresses the loss function (pain).</div>
+            <div class="rev-quote">"This is the lived reality of an 82-year-old, compressed into actionable leverage. The gradient dictates the intervention."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3:30–4:30 -->
+    <div class="tl-item">
+      <div class="tl-time">3:30–4:30</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="tl-heading">The <em>Moat</em></div>
+        <p class="tl-prose">He will be testing if this is software or true infrastructure.</p>
+        <div class="moat-row">
+          <div class="moat-card">
+            <div class="moat-icon">①</div>
+            <div class="moat-label">Tensor layer</div>
+            <div class="moat-text">Reveal the raw, append-only NDJSON event stream. Show it is live, not mock data.</div>
+          </div>
+          <div class="moat-card">
+            <div class="moat-icon">②</div>
+            <div class="moat-label">State axiom</div>
+            <div class="moat-text">State vector θ<sub>t</sub> governed entirely by immutable ledger Σ Event<sub>i</sub> — auditable to GitHub commit.</div>
+          </div>
+          <div class="moat-card">
+            <div class="moat-icon">③</div>
+            <div class="moat-label">Kampala DPI</div>
+            <div class="moat-text">Battle-tested against MTN DPI realities via UDP/WireGuard tunnel. <strong style="color:var(--text0);">It ships; it does not simulate.</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4:30–5:00 -->
+    <div class="tl-item">
+      <div class="tl-time">4:30–5:00</div>
+      <div class="tl-spine"><div class="tl-dot"></div></div>
+      <div class="tl-body">
+        <div class="tl-heading">The <em>Pivot</em></div>
+        <p class="tl-prose">
+          Do not ask for capital. Ask for architectural alignment. Leave the ball in his court — advisor, connector, or future allocator.
+        </p>
+        <div class="pivot-card">
+          <div class="pivot-question">"Where do you see sovereign decision infrastructure sitting within <em>East Africa's capital stack</em> right now?"</div>
+          <div class="pivot-note">Then AirDrop or hand over this document. The question positions him, not you. Let him locate himself on the map.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+
+  <hr class="divider" style="margin-top:2rem;"/>
+
+  <!-- PRE-LOAD CHECKLIST -->
+  <p class="sec-label">Pre-load checklist · walk in with these endpoints live</p>
+  <ul class="check-list">
+    <li>
+      <span class="check-icon">✓</span>
+      <span>Enterprise twin <code style="font-family:var(--mono);font-size:.68rem;">/smart/</code> — Matrix tab open, Jacobian Oracle visible, no loading state, Bond yield Δ row immediately accessible</span>
+    </li>
+    <li>
+      <span class="check-icon">✓</span>
+      <span>Clinical twin — Prossy Nansubuga, Pain Diary or Matrix tab loaded, polypharmacy Jacobian rendered without NaN% anywhere in the display</span>
+    </li>
+    <li>
+      <span class="check-icon">✓</span>
+      <span>Tensor layer visible in a second tab — raw NDJSON event ledger with at least one recent append visible and timestamp-stamped</span>
+    </li>
+    <li>
+      <span class="check-icon">✓</span>
+      <span>WireGuard/WARP active — confirm connectivity through MTN DPI before arriving; do not troubleshoot in the room</span>
+    </li>
+    <li>
+      <span class="check-icon">✓</span>
+      <span>This document ready to AirDrop or share at the 4:30 mark — dark theme default, no further configuration required</span>
+    </li>
+  </ul>
+
+  <hr class="divider" style="margin-top:2rem;"/>
+
+  <!-- BOARDROOM TRANSLATION -->
+  <p class="sec-label">The leave-behind · boardroom translation layer</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;">
+    <div style="padding:.75rem .9rem;border:.5px solid var(--border);border-radius:6px;background:rgba(255,255,255,.02);text-align:center;">
+      <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-bright);opacity:.85;margin-bottom:5px;">CIO</div>
+      <div style="font-size:.7rem;color:var(--text2);line-height:1.4;">Sees architecture — NDJSON pipelines, FastAPI, RLS, GitHub transparency</div>
+    </div>
+    <div style="padding:.75rem .9rem;border:.5px solid var(--border);border-radius:6px;background:rgba(255,255,255,.02);text-align:center;">
+      <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-bright);opacity:.85;margin-bottom:5px;">CFO</div>
+      <div style="font-size:.7rem;color:var(--text2);line-height:1.4;">Sees sensitivity — Jacobian Oracle, risk surfaces, momentum per dollar</div>
+    </div>
+    <div style="padding:.75rem .9rem;border:.5px solid var(--border);border-radius:6px;background:rgba(255,255,255,.02);text-align:center;">
+      <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-bright);opacity:.85;margin-bottom:5px;">Board</div>
+      <div style="font-size:.7rem;color:var(--text2);line-height:1.4;">Gets a scalar — 77.8% → WATCH / STOP. Mathematical consensus, not opinion.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    <div class="footer-phrase">Okubala si Kulaba.</div>
+    <div class="footer-contact">
+      <div class="footer-line"><a href="https://ukubona-llc.github.io">ukubona-llc.github.io</a></div>
+      <div class="footer-line">Kampala, Uganda · 2026</div>
+    </div>
+  </div>
+
+</div><!-- /outer -->
+
+<script>
+(function(){
+  var html = document.documentElement;
+  var btn  = document.getElementById('theme-btn');
+  var curr = 'dark';
+  function apply(t){
+    curr = t;
+    html.setAttribute('data-theme', t);
+    btn.textContent = t === 'dark' ? 'light' : 'dark';
+  }
+  btn.addEventListener('click', function(){ apply(curr === 'dark' ? 'light' : 'dark'); });
+  apply('dark');
+})();
+</script>
+</body>
+</html>
